@@ -37,6 +37,10 @@ Tabs.Main:AddButton({ Title = "Blade Ball", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/PawsThePaw/Plutonium.AA/main/Plutonium.Loader.lua"))()
 end })
 
+Tabs.Main:AddButton({ Title = "Blade Ball", Callback = function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Natural-Disaster-Survival-Super-ring-V4-24296"))()
+end })
+
 Tabs.LocalPlayer:AddButton({ Title = "Infinite Jump", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/infjump/main/main"))()
 end })
