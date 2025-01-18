@@ -1,0 +1,108 @@
+-- Criei esse Hub pra uso pessoal(Erickzzssx)
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+-- Aviso ao notificar
+Fluent:Notify({ Title = "Notificação", Content = "Script Executado" })
+
+-- Criação da janela principal
+local Window = Fluent:CreateWindow({
+    Title = "Erickzzssx Hub " .. Fluent.Version,
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Theme = "Dark"
+})
+
+-- Abas
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main" }),
+    LocalPlayer = Window:AddTab({ Title = "LocalPlayer" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
+    Credits = Window:AddTab({ Title = "Credits" })
+}
+
+-- Adicionando conteúdo nas abas
+Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Script abaixo!" })
+Tabs.Credits:AddParagraph({ Title = "TikTok", Content = "erickzzssx0" })
+
+-- Botões de scripts
+Tabs.Main:AddButton({ Title = "Infinite Yield", Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end })
+
+Tabs.Main:AddButton({ Title = "Fisch", Callback = function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Fisch-Speed-Hub-X-No-Key-Free-21187"))()
+end })
+
+Tabs.Main:AddButton({ Title = "Blade Ball", Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PawsThePaw/Plutonium.AA/main/Plutonium.Loader.lua"))()
+end })
+
+Tabs.LocalPlayer:AddButton({ Title = "Infinite Jump", Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/infjump/main/main"))()
+end })
+
+Tabs.LocalPlayer:AddButton({ Title = "NoClip by Erickzzssx", Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ErickzzssxHub1.2.0-/refs/heads/main/Noclip"))()
+end })
+
+Tabs.Main:AddButton({ Title = "Blade Ball (Outra Versão)", Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/refs/heads/main/Script"))()
+end })
+
+-- Alternador (Toggle)
+local Toggle = Tabs.Main:AddToggle("AutoFarm", { Title = "Auto Farm (Not working)" })
+Toggle:OnChanged(function(Value)
+    print("Auto Farm está:", Value and "Ativado" or "Desativado")
+end)
+
+-- Slider de WalkSpeed
+local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
+    Title = "WalkSpeed",
+    Description = "Ajuste a velocidade do jogador",
+    Default = 2,
+    Min = 0,
+    Max = 10,
+    Rounding = 1,
+    Callback = function(Value)
+        local player = game.Players.LocalPlayer
+        if player and player.Character then
+            local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid.WalkSpeed = Value * 10 -- Multiplicado para melhor ajuste (padrão do Roblox é 16)
+                print("WalkSpeed ajustado para:", humanoid.WalkSpeed)
+            else
+                warn("Humanoid não encontrado!")
+            end
+        else
+            warn("Personagem não carregado!")
+        end
+    end
+})
+
+-- Slider de JumpPower
+local JumpPowerSlider = Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
+    Title = "JumpPower",
+    Description = "Ajuste a altura do pulo do jogador",
+    Default = 2,
+    Min = 0,
+    Max = 10,
+    Rounding = 1,
+    Callback = function(Value)
+        local player = game.Players.LocalPlayer
+        if player and player.Character then
+            local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid.JumpPower = Value * 20 -- Multiplicado para melhor ajuste (padrão do Roblox é 50)
+                print("JumpPower ajustado para:", humanoid.JumpPower)
+            else
+                warn("Humanoid não encontrado!")
+            end
+        else
+            warn("Personagem não carregado!")
+        end
+    end
+})
+
+-- Finalizando configurações
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
