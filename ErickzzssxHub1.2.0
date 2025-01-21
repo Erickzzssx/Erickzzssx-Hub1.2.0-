@@ -41,6 +41,10 @@ Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Natural-Disaster-Survival-Super-ring-V4-24296"))()
 end })
 
+Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))()
+end })
+
 Tabs.Main:AddButton({ Title = "Rivals", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/Rivals%20Latest.lua",true))()
 end })
@@ -55,6 +59,10 @@ end })
 
 Tabs.LocalPlayer:AddButton({ Title = "Reverse(E)", Callback = function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub"))()
+end })
+
+Tabs.LocalPlayer:AddButton({ Title = "Reverse(E)", Callback = function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
 end })
 
 Tabs.LocalPlayer:AddButton({ Title = "Broinha", Callback = function()
