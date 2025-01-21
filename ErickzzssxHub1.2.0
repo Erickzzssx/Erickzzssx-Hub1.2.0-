@@ -53,8 +53,8 @@ Tabs.LocalPlayer:AddButton({ Title = "NoClip by Erickzzssx", Callback = function
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ErickzzssxHub1.2.0-/refs/heads/main/Noclip"))()
 end })
 
-Tabs.LocalPlayer:AddButton({ Title = "ReverseHub", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub"))()
+Tabs.LocalPlayer:AddButton({ Title = "Reverse(E)", Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub"))()
 end })
 
 Tabs.Main:AddButton({ Title = "Blade Ball (Outra Versão)", Callback = function()
