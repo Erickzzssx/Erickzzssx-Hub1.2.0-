@@ -41,7 +41,7 @@ Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Natural-Disaster-Survival-Super-ring-V4-24296"))()
 end })
 
-Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
+Tabs.Main:AddButton({ Title = "Blox Fruits", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloXFruits/refs/heads/main/Source.lua"))()
 end })
 
