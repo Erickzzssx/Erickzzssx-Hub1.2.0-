@@ -49,13 +49,21 @@ Tabs.Main:AddButton({ Title = "Mic Up(No Ban)", Callback = function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))()
 end })
 
+local StarterGui = game:GetService("StarterGui")
+
 local Button = Tabs.Main:AddButton({
     Title = "Blade Ball (Outra Versão)",
     Callback = function()
-        print("Script 'Blade Ball' executado")
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/refs/heads/main/Script"))()
+        StarterGui:SetCore("SendNotification", {
+            Title = "Executado!",
+            Text = "Script 'Blade Ball' foi ativado.",
+            Duration = 3
+        })
+        
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/main/Script"))()
     end
 })
+
 
 Tabs.LocalPlayer:AddButton({ Title = "Infinite Jump", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/infjump/main/main"))()
