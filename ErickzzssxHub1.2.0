@@ -69,9 +69,13 @@ Tabs.LocalPlayer:AddButton({ Title = "Broinha", Callback = function()
    loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
 end })
 
-Tabs.Main:AddButton({ Title = "Blade Ball (Outra Versão)", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/refs/heads/main/Script"))()
-end })
+Tabs.Main:AddButton({
+    Title = "Blade Ball (Outra Versão)",
+    Callback = function()
+        print("Script 'Blade Ball' executado") -- Exibe no console
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/refs/heads/main/Script"))()
+    end
+})
 
 -- Alternador (Toggle)
 local Toggle = Tabs.Main:AddToggle("AutoFarm", { Title = "Auto Farm (Not working)" })
