@@ -49,10 +49,6 @@ Tabs.Main:AddButton({ Title = "Mic Up(No Ban)", Callback = function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))()
 end })
 
-Tabs.Main:AddButton({ Title = "Rivals", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/Rivals%20Latest.lua",true))()
-end })
-
 Tabs.LocalPlayer:AddButton({ Title = "Infinite Jump", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/infjump/main/main"))()
 end })
