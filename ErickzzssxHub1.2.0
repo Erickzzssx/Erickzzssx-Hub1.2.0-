@@ -69,13 +69,20 @@ Tabs.LocalPlayer:AddButton({ Title = "Broinha", Callback = function()
    loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
 end })
 
+local StarterGui = game:GetService("StarterGui")
+
 Tabs.Main:AddButton({
     Title = "Blade Ball (Outra Versão)",
     Callback = function()
-        print("Script 'Blade Ball' executado") -- Exibe no console
+        StarterGui:SetCore("SendNotification", {
+            Title = "Aviso",
+            Text = "Script 'Blade Ball' executado!",
+            Duration = 3
+        })
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/refs/heads/main/Script"))()
     end
 })
+
 
 -- Alternador (Toggle)
 local Toggle = Tabs.Main:AddToggle("AutoFarm", { Title = "Auto Farm (Not working)" })
