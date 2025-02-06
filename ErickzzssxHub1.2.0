@@ -55,7 +55,6 @@ local Button = Tabs.Main:AddButton({
             Text = "Script 'Blade Ball' foi ativado.",
             Duration = 3
         })
-        
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))()
     end
 })
