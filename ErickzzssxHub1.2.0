@@ -45,19 +45,9 @@ Tabs.Main:AddButton({ Title = "Blox Fruits", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloXFruits/refs/heads/main/Source.lua"))()
 end })
 
-local StarterGui = game:GetService("StarterGui")
-
-local Button = Tabs.Main:AddButton({
-    Title = "Mic Up",
-    Callback = function()
-        StarterGui:SetCore("SendNotification", {
-            Title = "Executado!",
-            Text = "Script 'Blade Ball' foi ativado.",
-            Duration = 3
-        })
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))()
-    end
-})
+Tabs.Main:AddButton({ Title = "Mic Up", Callback = function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))() 
+end })
 
 local StarterGui = game:GetService("StarterGui")
 
