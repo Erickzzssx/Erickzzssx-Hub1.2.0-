@@ -94,15 +94,75 @@ end)
 local Toggle = Tabs.Main:AddToggle("Aimbot Erickzzssx", { Title = "Aimbot Erickzzssx" })
 
 Toggle:OnChanged(function(Value)
-    local success, err = pcall(function()
-        if Value then
-            -- Ativa o script Aimbot
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot"))()
-        else
-            -- Caso precise de código para desativar o script
-            print("Aimbot desativado!")
+    if Value then
+        -- Iniciar o código do aimbot
+        local UserInputService = game:GetService("UserInputService")
+        local RunService = game:GetService("RunService")
+        local LocalPlayer = game.Players.LocalPlayer
+        local Camera = workspace.CurrentCamera
+
+        local aiming = false  -- Variável para verificar se o botão direito está pressionado
+
+        -- Função para encontrar o inimigo mais próximo da mira
+        local function getClosestToCrosshair()
+            local closestEnemy = nil
+            local shortestAngle = math.huge  
+
+            for _, player in pairs(game.Players:GetPlayers()) do
+                if player ~= LocalPlayer and player.Character then
+                    local head = player.Character:FindFirstChild("Head")  
+                        or player.Character:FindFirstChild("UpperTorso")  
+                        or player.Character:FindFirstChild("HumanoidRootPart")
+
+                    if head then
+                        local screenPosition, onScreen = Camera:WorldToViewportPoint(head.Position)
+
+                        if onScreen then
+                            local mouseLocation = UserInputService:GetMouseLocation()
+                            local distanceFromCrosshair = (Vector2.new(screenPosition.X, screenPosition.Y) - mouseLocation).Magnitude
+
+                            if distanceFromCrosshair < shortestAngle then
+                                shortestAngle = distanceFromCrosshair
+                                closestEnemy = head
+                            end
+                        end
+                    end
+                end
+            end
+
+            return closestEnemy
         end
-    end)
+
+        -- Ativar e desativar o aimbot ao pressionar o botão direito
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if input.UserInputType == Enum.UserInputType.MouseButton2 then
+                aiming = true
+            end
+        end)
+
+        UserInputService.InputEnded:Connect(function(input, gameProcessed)
+            if input.UserInputType == Enum.UserInputType.MouseButton2 then
+                aiming = false
+            end
+        end)
+
+        -- Atualizar a mira quando o botão direito estiver pressionado
+        RunService.RenderStepped:Connect(function()
+            if aiming then
+                local target = getClosestToCrosshair()
+                if target then
+                    -- Adicionando rotação para travar melhor a mira no alvo
+                    local camPosition = Camera.CFrame.Position
+                    local targetPosition = target.Position
+                    Camera.CFrame = CFrame.new(camPosition, targetPosition)
+                end
+            end
+        end)
+    else
+        -- Se o toggle for desmarcado, parar o aimbot (caso você queira adicionar algo aqui)
+        print("Aimbot desativado!")
+    end
+end)
 
     -- Se ocorrer erro no callback, será mostrado no console
     if not success then
