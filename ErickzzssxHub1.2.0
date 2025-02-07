@@ -90,31 +90,44 @@ Toggle:OnChanged(function(Value)
     print("Auto Farm está:", Value and "Ativado" or "Desativado")
 end)
 
+-- Alternador (Toggle)
 local Toggle = Tabs.Main:AddToggle("Aimbot Erickzzssx", { Title = "Aimbot Erickzzssx" })
 
 Toggle:OnChanged(function(Value)
     -- Tenta exibir a notificação e ativar/desativar o script
     local success, err = pcall(function()
         if Value then
-            -- Notificação de ativação
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Aimbot Erickzzssx",
-                Text = "Script Aimbot ativado!",
-                Duration = 3
-            })
+            -- Verifica se o StarterGui está acessível
+            local StarterGui = game:GetService("StarterGui")
+            if StarterGui then
+                -- Notificação de ativação
+                StarterGui:SetCore("SendNotification", {
+                    Title = "Aimbot Erickzzssx",
+                    Text = "Script Aimbot ativado!",
+                    Duration = 3
+                })
+            else
+                print("StarterGui não encontrado.")
+            end
             
             -- Ativa o script se o toggle for ativado
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot"))()
+            print("Tentando ativar o script Aimbot...")
+            local aimbotScript = game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot")
+            if aimbotScript then
+                loadstring(aimbotScript)()
+            else
+                print("Erro ao carregar o script Aimbot.")
+            end
         else
             -- Notificação de desativação
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Aimbot Erickzzssx",
-                Text = "Script Aimbot desativado!",
-                Duration = 3
-            })
-            
-            -- Desativa o script ou faz o que for necessário quando o toggle for desmarcado
-            -- Aqui você pode adicionar o código para parar o script, se necessário
+            local StarterGui = game:GetService("StarterGui")
+            if StarterGui then
+                StarterGui:SetCore("SendNotification", {
+                    Title = "Aimbot Erickzzssx",
+                    Text = "Script Aimbot desativado!",
+                    Duration = 3
+                })
+            end
         end
     end)
     
@@ -123,7 +136,6 @@ Toggle:OnChanged(function(Value)
         print("Erro no callback:", err)
     end
 end)
-
 
 -- Slider de WalkSpeed
 local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
