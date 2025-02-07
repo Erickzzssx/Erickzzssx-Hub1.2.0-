@@ -94,46 +94,19 @@ end)
 local Toggle = Tabs.Main:AddToggle("Aimbot Erickzzssx", { Title = "Aimbot Erickzzssx" })
 
 Toggle:OnChanged(function(Value)
-    -- Tenta exibir a notificação e ativar/desativar o script
     local success, err = pcall(function()
         if Value then
-            -- Verifica se o StarterGui está acessível
-            local StarterGui = game:GetService("StarterGui")
-            if StarterGui then
-                -- Notificação de ativação
-                StarterGui:SetCore("SendNotification", {
-                    Title = "Aimbot Erickzzssx",
-                    Text = "Script Aimbot ativado!",
-                    Duration = 3
-                })
-            else
-                print("StarterGui não encontrado.")
-            end
-            
-            -- Ativa o script se o toggle for ativado
-            print("Tentando ativar o script Aimbot...")
-            local aimbotScript = game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot")
-            if aimbotScript then
-                loadstring(aimbotScript)()
-            else
-                print("Erro ao carregar o script Aimbot.")
-            end
+            -- Ativa o script Aimbot
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot"))()
         else
-            -- Notificação de desativação
-            local StarterGui = game:GetService("StarterGui")
-            if StarterGui then
-                StarterGui:SetCore("SendNotification", {
-                    Title = "Aimbot Erickzzssx",
-                    Text = "Script Aimbot desativado!",
-                    Duration = 3
-                })
-            end
+            -- Caso precise de código para desativar o script
+            print("Aimbot desativado!")
         end
     end)
-    
-    -- Se ocorrer algum erro, exibe a mensagem
+
+    -- Se ocorrer erro no callback, será mostrado no console
     if not success then
-        print("Erro no callback:", err)
+        print("Erro ao executar o script:", err)
     end
 end)
 
