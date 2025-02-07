@@ -84,12 +84,6 @@ Tabs.LocalPlayer:AddButton({ Title = "Broinha", Callback = function()
    loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
 end })
 
--- Alternador (Toggle)
-local Toggle = Tabs.Main:AddToggle("AutoFarm", { Title = "Auto Farm (Not working)" })
-Toggle:OnChanged(function(Value)
-    print("Auto Farm está:", Value and "Ativado" or "Desativado")
-end)
-
 -- Slider de WalkSpeed
 local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
     Title = "WalkSpeed",
