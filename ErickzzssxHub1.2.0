@@ -93,29 +93,37 @@ end)
 local Toggle = Tabs.Main:AddToggle("Aimbot Erickzzssx", { Title = "Aimbot Erickzzssx" })
 
 Toggle:OnChanged(function(Value)
-    -- Exibe uma notificação para o estado do Aimbot
-    if Value then
-        -- Notificação de ativação
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Aimbot Erickzzssx",
-            Text = "Script Aimbot ativado!",
-            Duration = 3
-        })
-        
-        -- Ativa o script se o toggle for ativado
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot"))()
-    else
-        -- Notificação de desativação
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Aimbot Erickzzssx",
-            Text = "Script Aimbot desativado!",
-            Duration = 3
-        })
-        
-        -- Desativa o script ou faz o que for necessário quando o toggle for desmarcado
-        -- Aqui você pode adicionar o código para parar o script, se necessário
+    -- Tenta exibir a notificação e ativar/desativar o script
+    local success, err = pcall(function()
+        if Value then
+            -- Notificação de ativação
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Aimbot Erickzzssx",
+                Text = "Script Aimbot ativado!",
+                Duration = 3
+            })
+            
+            -- Ativa o script se o toggle for ativado
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot"))()
+        else
+            -- Notificação de desativação
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Aimbot Erickzzssx",
+                Text = "Script Aimbot desativado!",
+                Duration = 3
+            })
+            
+            -- Desativa o script ou faz o que for necessário quando o toggle for desmarcado
+            -- Aqui você pode adicionar o código para parar o script, se necessário
+        end
+    end)
+    
+    -- Se ocorrer algum erro, exibe a mensagem
+    if not success then
+        print("Erro no callback:", err)
     end
 end)
+
 
 -- Slider de WalkSpeed
 local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
