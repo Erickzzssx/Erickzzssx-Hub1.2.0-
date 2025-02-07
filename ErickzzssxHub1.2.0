@@ -90,6 +90,22 @@ Toggle:OnChanged(function(Value)
     print("Auto Farm está:", Value and "Ativado" or "Desativado")
 end)
 
+-- Alternador (Toggle)
+local Toggle = Tabs.Main:AddToggle("Aimbot Erickzzssx", { Title = "Aimbot Erickzzssx" })
+
+Toggle:OnChanged(function(Value)
+    print("Aimbot Erickzzssx está:", Value and "Ativado" or "Desativado")
+    
+    -- Verifica se o toggle foi ativado
+    if Value then
+        -- Ativa o script se o toggle for ativado
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/refs/heads/main/Erickzzssx%20Aimbot"))()
+    else
+        -- Desativa o script ou faz o que for necessário quando o toggle for desmarcado
+        -- Aqui você pode adicionar o código para parar o script, se necessário
+    end
+end)
+
 -- Slider de WalkSpeed
 local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
     Title = "WalkSpeed",
