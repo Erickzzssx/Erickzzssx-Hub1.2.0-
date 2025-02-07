@@ -90,17 +90,28 @@ Toggle:OnChanged(function(Value)
     print("Auto Farm está:", Value and "Ativado" or "Desativado")
 end)
 
--- Alternador (Toggle)
 local Toggle = Tabs.Main:AddToggle("Aimbot Erickzzssx", { Title = "Aimbot Erickzzssx" })
 
 Toggle:OnChanged(function(Value)
-    print("Aimbot Erickzzssx está:", Value and "Ativado" or "Desativado")
-    
-    -- Verifica se o toggle foi ativado
+    -- Exibe uma notificação para o estado do Aimbot
     if Value then
+        -- Notificação de ativação
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Aimbot Erickzzssx",
+            Text = "Script Aimbot ativado!",
+            Duration = 3
+        })
+        
         -- Ativa o script se o toggle for ativado
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/refs/heads/main/Erickzzssx%20Aimbot"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/main/ErickzzssxAimbot"))()
     else
+        -- Notificação de desativação
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Aimbot Erickzzssx",
+            Text = "Script Aimbot desativado!",
+            Duration = 3
+        })
+        
         -- Desativa o script ou faz o que for necessário quando o toggle for desmarcado
         -- Aqui você pode adicionar o código para parar o script, se necessário
     end
