@@ -132,12 +132,14 @@ local JumpPowerSlider = Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
     end
 })
 
--- Detecta a tecla Shift direito e reabre a interface caso esteja minimizada
+-- Função para reabrir a interface ao pressionar Shift Direito
 local UserInputService = game:GetService("UserInputService")
+local isVisible = true -- Começa visível
 
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed and input.KeyCode == Enum.KeyCode.RightShift then
-        Window:Show() -- Reabre a interface se estiver minimizada
+        isVisible = not isVisible -- Alterna entre visível e invisível
+        Window.Frame.Visible = isVisible -- Mostra ou esconde a janela
     end
 end)
 
