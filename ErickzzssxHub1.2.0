@@ -38,7 +38,7 @@ Tabs.Main:AddButton({ Title = "Blade Ball", Callback = function()
 end })
 
 Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
-    loadstring(game:HttpGet("https://rawscripts.net/raw/Natural-Disaster-Survival-Super-ring-V4-24296"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Ring-Parts-By-Ericksszzx/refs/heads/main/Ring%20Parts%20By%20Ericksszzx"))()
 end })
 
 Tabs.Main:AddButton({ Title = "Blox Fruits", Callback = function()
