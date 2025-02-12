@@ -41,6 +41,10 @@ Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Ring-Parts-By-Ericksszzx/refs/heads/main/Ring%20Parts%20By%20Ericksszzx"))()
 end })
 
+Tabs.Main:AddButton({ Title = "Evade", Callback = function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Evade-Evade-The-Best-Free-GUI-Script-lots-of-Features-20718"))()
+end })
+
 Tabs.Main:AddButton({ Title = "Blox Fruits", Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloXFruits/refs/heads/main/Source.lua"))()
 end })
