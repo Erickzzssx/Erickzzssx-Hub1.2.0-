@@ -15,6 +15,7 @@ local Window = Fluent:CreateWindow({
 -- Abas
 local Tabs = {
     Main = Window:AddTab({ Title = "Main" }),
+    Aimbot = Window:AddTab({ Title = "Aimbots" }),
     LocalPlayer = Window:AddTab({ Title = "LocalPlayer" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     Credits = Window:AddTab({ Title = "Credits" })
@@ -25,6 +26,14 @@ Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Script abaixo!" })
 Tabs.Credits:AddParagraph({ Title = "TikTok", Content = "erickzzssx0" })
 
 -- Botões de scripts
+Tabs.Aimbot:AddButton({ Title = "Universal Aimbot", Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/refs/heads/main/Erickzzssx%20Aimbot"))()
+end })
+
+Tabs.Aimbot:AddButton({ Title = "Rivals Aimbot", Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Erickzzssx-Rivals-Aimbot/refs/heads/main/Erickzzssx-Rivals-Aimbot"))()
+end })
+
 Tabs.Main:AddButton({ Title = "Infinite Yield", Callback = function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end })
