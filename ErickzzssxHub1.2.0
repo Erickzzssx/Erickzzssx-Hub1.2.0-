@@ -1,10 +1,8 @@
 -- Criei esse Hub pra uso pessoal(Erickzzssx)
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
--- Aviso ao notificar
 Fluent:Notify({ Title = "Notificação", Content = "Script Executado" })
 
--- Criação da janela principal
 local Window = Fluent:CreateWindow({
     Title = "Erickzzssx Hub " .. Fluent.Version,
     TabWidth = 160,
@@ -12,7 +10,6 @@ local Window = Fluent:CreateWindow({
     Theme = "Dark"
 })
 
--- Abas
 local Tabs = {
     Main = Window:AddTab({ Title = "Main" }),
     Aimbot = Window:AddTab({ Title = "Aimbots" }),
@@ -21,54 +18,56 @@ local Tabs = {
     Credits = Window:AddTab({ Title = "Credits" })
 }
 
--- Adicionando conteúdo nas abas
 Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Script abaixo!" })
 Tabs.Credits:AddParagraph({ Title = "TikTok", Content = "erickzzssx0" })
 
--- Botões de scripts
+local function executeScript(scriptName, url)
+    Fluent:Notify({ Title = "Executado!", Content = "Script '" .. scriptName .. "' foi ativado." })
+    loadstring(game:HttpGet(url))()
+end
+
 Tabs.Aimbot:AddButton({ Title = "Universal Aimbot", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/refs/heads/main/Erickzzssx%20Aimbot"))()
+    executeScript("Universal Aimbot", "https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/refs/heads/main/Erickzzssx%20Aimbot")
 end })
 
 Tabs.Aimbot:AddButton({ Title = "Rivals Aimbot", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Erickzzssx-Rivals-Aimbot/refs/heads/main/Erickzzssx-Rivals-Aimbot"))()
+    executeScript("Rivals Aimbot", "https://raw.githubusercontent.com/Erickzzssx/Erickzzssx-Rivals-Aimbot/refs/heads/main/Erickzzssx-Rivals-Aimbot")
 end })
 
 Tabs.Main:AddButton({ Title = "Infinite Yield", Callback = function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    executeScript("Infinite Yield", "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source")
 end })
 
 Tabs.Main:AddButton({ Title = "Fisch", Callback = function()
-    loadstring(game:HttpGet("https://rawscripts.net/raw/Fisch-Speed-Hub-X-No-Key-Free-21187"))()
+    executeScript("Fisch", "https://rawscripts.net/raw/Fisch-Speed-Hub-X-No-Key-Free-21187")
 end })
 
 Tabs.Main:AddButton({ Title = "Blade Ball", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/PawsThePaw/Plutonium.AA/main/Plutonium.Loader.lua"))()
+    executeScript("Blade Ball", "https://raw.githubusercontent.com/PawsThePaw/Plutonium.AA/main/Plutonium.Loader.lua")
 end })
 
 Tabs.Main:AddButton({ Title = "Survival Disarter", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/Ring-Parts-By-Ericksszzx/refs/heads/main/Ring%20Parts%20By%20Ericksszzx"))()
+    executeScript("Survival Disarter", "https://raw.githubusercontent.com/Erickzzssx/Ring-Parts-By-Ericksszzx/refs/heads/main/Ring%20Parts%20By%20Ericksszzx")
 end })
 
 Tabs.Main:AddButton({ Title = "Evade", Callback = function()
-    loadstring(game:HttpGet("https://rawscripts.net/raw/Evade-Evade-The-Best-Free-GUI-Script-lots-of-Features-20718"))()
+    executeScript("Evade", "https://rawscripts.net/raw/Evade-Evade-The-Best-Free-GUI-Script-lots-of-Features-20718")
 end })
 
 Tabs.Main:AddButton({ Title = "Blox Fruits", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloXFruits/refs/heads/main/Source.lua"))()
+    executeScript("Blox Fruits", "https://raw.githubusercontent.com/realredz/BloXFruits/refs/heads/main/Source.lua")
 end })
 
 Tabs.Main:AddButton({ Title = "Mic Up", Callback = function()
-    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta')))() 
+    executeScript("Mic Up", "https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/v6-beta")
 end })
 
 Tabs.Main:AddButton({ Title = "Slap Battles", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/SlapBattles-Ericksszzx/refs/heads/main/Script%20Slap%20Battles%20By%20Ericksszzx"))() 
+    executeScript("Slap Battles", "https://raw.githubusercontent.com/Erickzzssx/SlapBattles-Ericksszzx/refs/heads/main/Script%20Slap%20Battles%20By%20Ericksszzx")
 end })
 
 local StarterGui = game:GetService("StarterGui")
-
-local Button = Tabs.Main:AddButton({
+Tabs.Main:AddButton({
     Title = "Blade Ball (Outra Versão)",
     Callback = function()
         StarterGui:SetCore("SendNotification", {
@@ -76,33 +75,31 @@ local Button = Tabs.Main:AddButton({
             Text = "Script 'Blade Ball' foi ativado.",
             Duration = 3
         })
-        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/main/Script"))()
     end
 })
 
 Tabs.LocalPlayer:AddButton({ Title = "Infinite Jump", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/infjump/main/main"))()
+    executeScript("Infinite Jump", "https://raw.githubusercontent.com/HeyGyt/infjump/main/main")
 end })
 
 Tabs.LocalPlayer:AddButton({ Title = "NoClip by Erickzzssx", Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ErickzzssxHub1.2.0-/refs/heads/main/Noclip"))()
+    executeScript("NoClip by Erickzzssx", "https://raw.githubusercontent.com/Erickzzssx/ErickzzssxHub1.2.0-/refs/heads/main/Noclip")
 end })
 
 Tabs.LocalPlayer:AddButton({ Title = "Reverse(E)", Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub"))()
+    executeScript("Reverse(E)", "https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub")
 end })
 
 Tabs.LocalPlayer:AddButton({ Title = "Invisible", Callback = function()
-   loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+    executeScript("Invisible", "https://pastebin.com/raw/3Rnd9rHf")
 end })
 
 Tabs.LocalPlayer:AddButton({ Title = "Broinha", Callback = function()
-   loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
+    executeScript("Broinha", "https://pastefy.app/YZoglOyJ/raw")
 end })
 
--- Slider de WalkSpeed
-local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
+Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
     Title = "WalkSpeed",
     Description = "Ajuste a velocidade do jogador",
     Default = 2,
@@ -114,7 +111,7 @@ local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
         if player and player.Character then
             local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
             if humanoid then
-                humanoid.WalkSpeed = Value * 10 -- Multiplicado para melhor ajuste (padrão do Roblox é 16)
+                humanoid.WalkSpeed = Value * 10
                 print("WalkSpeed ajustado para:", humanoid.WalkSpeed)
             else
                 warn("Humanoid não encontrado!")
@@ -125,8 +122,7 @@ local WalkSpeedSlider = Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
     end
 })
 
--- Slider de JumpPower
-local JumpPowerSlider = Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
+Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
     Title = "JumpPower",
     Description = "Ajuste a altura do pulo do jogador",
     Default = 2,
@@ -138,7 +134,7 @@ local JumpPowerSlider = Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
         if player and player.Character then
             local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
             if humanoid then
-                humanoid.JumpPower = Value * 20 -- Multiplicado para melhor ajuste (padrão do Roblox é 50)
+                humanoid.JumpPower = Value * 20
                 print("JumpPower ajustado para:", humanoid.JumpPower)
             else
                 warn("Humanoid não encontrado!")
@@ -149,17 +145,30 @@ local JumpPowerSlider = Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
     end
 })
 
--- Função para reabrir a interface ao pressionar Shift Direito
-local UserInputService = game:GetService("UserInputService")
-local isVisible = true -- Começa visível
+-- Botão de minimizar: ao clicar, exibe a notificação e depois oculta a interface
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.fromOffset(30, 30)
+MinimizeButton.Position = UDim2.new(1, -35, 0, 5)
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+MinimizeButton.TextColor3 = Color3.new(1, 1, 1)
+MinimizeButton.Text = "_" 
+MinimizeButton.Parent = Window.Frame
 
+MinimizeButton.MouseButton1Click:Connect(function()
+    Fluent:Notify({ Title = "Minimizado", Content = "Para reabrir o script aperte 'K'" })
+    wait(0.1)
+    Window.Frame.Visible = false
+end)
+
+-- Listener para reabrir a interface ao pressionar "K"
+local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.RightShift then
-        isVisible = not isVisible -- Alterna entre visível e invisível
-        Window.Frame.Visible = isVisible -- Mostra ou esconde a janela
+    if not gameProcessed and input.KeyCode == Enum.KeyCode.K then
+        if not Window.Frame.Visible then
+            Window.Frame.Visible = true
+        end
     end
 end)
 
--- Finalizando configurações
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
