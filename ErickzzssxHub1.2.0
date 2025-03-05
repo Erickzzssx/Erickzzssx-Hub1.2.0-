@@ -99,6 +99,10 @@ Tabs.LocalPlayer:AddButton({ Title = "Broinha", Callback = function()
     executeScript("Broinha", "https://pastefy.app/YZoglOyJ/raw")
 end })
 
+Tabs.LocalPlayer:AddButton({ Title = "Animations", Callback = function()
+    executeScript("Animations", "https://raw.githubusercontent.com/Erickzzssx/All-Animations-by-Erickzzssx/refs/heads/main/Animation%20Changer%20by%20Erickzzssx")
+end })
+
 Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
     Title = "WalkSpeed",
     Description = "Ajuste a velocidade do jogador",
