@@ -101,14 +101,6 @@ Tabs.Main:AddButton({
     end
 })
 
--- Adicionar scripts adicionais dinamicamente na aba Main
-local additionalScripts = {
-    { Title = "Teleport", url = "https://raw.githubusercontent.com/YourGitHub/TeleportScript/main/teleport.lua" },
-    { Title = "Speed Boost", url = "https://raw.githubusercontent.com/YourGitHub/SpeedBoostScript/main/speedboost.lua" },
-    { Title = "God Mode", url = "https://raw.githubusercontent.com/YourGitHub/GodModeScript/main/godmode.lua" },
-    { Title = "Auto Farm", url = "https://raw.githubusercontent.com/YourGitHub/AutoFarmScript/main/autofarm.lua" }
-}
-
 for _, script in ipairs(additionalScripts) do
     Tabs.Main:AddButton({
         Title = script.Title,
