@@ -1,31 +1,51 @@
--- Criei esse Hub pra uso pessoal(Erickzzssx)
+--[[
+    Erickzzssx Hub - Versão Melhorada
+    GUI aprimorada com ícones e design modernizado.
+    by Erickzzssx
+--]]
+
+-- Carregar as bibliotecas Fluent e os Addons
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
-Fluent:Notify({ Title = "Notificação", Content = "Script Executado" })
+-- Notificação inicial
+Fluent:Notify({ Title = "Notificação", Content = "Script Executado com Sucesso!" })
 
+-- Criação da janela principal com tema Dark e efeito Acrylic (blur)
 local Window = Fluent:CreateWindow({
     Title = "Erickzzssx Hub " .. Fluent.Version,
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Theme = "Dark"
+    SubTitle = "by Erickzzssx",
+    TabWidth = 180,
+    Size = UDim2.fromOffset(600, 500),
+    Theme = "Dark",
+    Acrylic = true,
+    MinimizeKey = Enum.KeyCode.K
 })
 
+-- Criação das abas com ícones (Lucide Icons)
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main" }),
-    Aimbot = Window:AddTab({ Title = "Aimbots" }),
-    LocalPlayer = Window:AddTab({ Title = "LocalPlayer" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Aimbot = Window:AddTab({ Title = "Aimbots", Icon = "target" }),
+    LocalPlayer = Window:AddTab({ Title = "LocalPlayer", Icon = "user" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
-    Credits = Window:AddTab({ Title = "Credits" })
+    Credits = Window:AddTab({ Title = "Credits", Icon = "info" })
 }
 
-Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Script abaixo!" })
-Tabs.Credits:AddParagraph({ Title = "TikTok", Content = "erickzzssx0" })
+-- Aba Main: Informações e botões de scripts diversos
+Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Selecione um script para executar:" })
 
+-- Aba Credits: Informações de créditos
+Tabs.Credits:AddParagraph({ Title = "TikTok", Content = "erickzzssx0" })
+Tabs.Credits:AddParagraph({ Title = "GitHub", Content = "github.com/Erickzzssx" })
+
+-- Função auxiliar para execução de scripts com notificação
 local function executeScript(scriptName, url)
     Fluent:Notify({ Title = "Executado!", Content = "Script '" .. scriptName .. "' foi ativado." })
     loadstring(game:HttpGet(url))()
 end
 
+-- Aba Aimbot: Botões para aimbots
 Tabs.Aimbot:AddButton({ Title = "Universal Aimbot", Callback = function()
     executeScript("Universal Aimbot", "https://raw.githubusercontent.com/Erickzzssx/Aimbot-Erickzzssx/refs/heads/main/Erickzzssx%20Aimbot")
 end })
@@ -34,6 +54,7 @@ Tabs.Aimbot:AddButton({ Title = "Rivals Aimbot", Callback = function()
     executeScript("Rivals Aimbot", "https://raw.githubusercontent.com/Erickzzssx/Erickzzssx-Rivals-Aimbot/refs/heads/main/Erickzzssx-Rivals-Aimbot")
 end })
 
+-- Aba Main: Botões para outros scripts
 Tabs.Main:AddButton({ Title = "Infinite Yield", Callback = function()
     executeScript("Infinite Yield", "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source")
 end })
@@ -66,6 +87,7 @@ Tabs.Main:AddButton({ Title = "Slap Battles", Callback = function()
     executeScript("Slap Battles", "https://raw.githubusercontent.com/Erickzzssx/SlapBattles-Ericksszzx/refs/heads/main/Script%20Slap%20Battles%20By%20Ericksszzx")
 end })
 
+-- Exemplo de script com notificação customizada utilizando StarterGui
 local StarterGui = game:GetService("StarterGui")
 Tabs.Main:AddButton({
     Title = "Blade Ball (Outra Versão)",
@@ -75,10 +97,28 @@ Tabs.Main:AddButton({
             Text = "Script 'Blade Ball' foi ativado.",
             Duration = 3
         })
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/main/Script"))()
+        executeScript("Blade Ball (Outra Versão)", "https://raw.githubusercontent.com/Efe0626/RaitoHub/main/Script")
     end
 })
 
+-- Adicionar scripts adicionais dinamicamente na aba Main
+local additionalScripts = {
+    { Title = "Teleport", url = "https://raw.githubusercontent.com/YourGitHub/TeleportScript/main/teleport.lua" },
+    { Title = "Speed Boost", url = "https://raw.githubusercontent.com/YourGitHub/SpeedBoostScript/main/speedboost.lua" },
+    { Title = "God Mode", url = "https://raw.githubusercontent.com/YourGitHub/GodModeScript/main/godmode.lua" },
+    { Title = "Auto Farm", url = "https://raw.githubusercontent.com/YourGitHub/AutoFarmScript/main/autofarm.lua" }
+}
+
+for _, script in ipairs(additionalScripts) do
+    Tabs.Main:AddButton({
+        Title = script.Title,
+        Callback = function()
+            executeScript(script.Title, script.url)
+        end
+    })
+end
+
+-- Aba LocalPlayer: Scripts e ajustes do jogador
 Tabs.LocalPlayer:AddButton({ Title = "Infinite Jump", Callback = function()
     executeScript("Infinite Jump", "https://raw.githubusercontent.com/HeyGyt/infjump/main/main")
 end })
@@ -87,8 +127,8 @@ Tabs.LocalPlayer:AddButton({ Title = "NoClip by Erickzzssx", Callback = function
     executeScript("NoClip by Erickzzssx", "https://raw.githubusercontent.com/Erickzzssx/ErickzzssxHub1.2.0-/refs/heads/main/Noclip")
 end })
 
-Tabs.LocalPlayer:AddButton({ Title = "Reverse(E)", Callback = function()
-    executeScript("Reverse(E)", "https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub")
+Tabs.LocalPlayer:AddButton({ Title = "Reverse (E)", Callback = function()
+    executeScript("Reverse (E)", "https://raw.githubusercontent.com/Erickzzssx/ReverseHub/refs/heads/main/ReverseHub")
 end })
 
 Tabs.LocalPlayer:AddButton({ Title = "Invisible", Callback = function()
@@ -103,6 +143,7 @@ Tabs.LocalPlayer:AddButton({ Title = "Animations", Callback = function()
     executeScript("Animations", "https://raw.githubusercontent.com/Erickzzssx/All-Animations-by-Erickzzssx/refs/heads/main/Animation%20Changer%20by%20Erickzzssx")
 end })
 
+-- Sliders para ajustes do jogador
 Tabs.LocalPlayer:AddSlider("WalkSpeedSlider", {
     Title = "WalkSpeed",
     Description = "Ajuste a velocidade do jogador",
@@ -149,22 +190,24 @@ Tabs.LocalPlayer:AddSlider("JumpPowerSlider", {
     end
 })
 
--- Botão de minimizar: ao clicar, exibe a notificação e depois oculta a interface
+-- Botão de minimizar a interface com estilo aprimorado
 local MinimizeButton = Instance.new("TextButton")
 MinimizeButton.Size = UDim2.fromOffset(30, 30)
 MinimizeButton.Position = UDim2.new(1, -35, 0, 5)
 MinimizeButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 MinimizeButton.TextColor3 = Color3.new(1, 1, 1)
 MinimizeButton.Text = "_" 
+MinimizeButton.Font = Enum.Font.GothamSemibold
+MinimizeButton.TextSize = 18
 MinimizeButton.Parent = Window.Frame
 
 MinimizeButton.MouseButton1Click:Connect(function()
-    Fluent:Notify({ Title = "Minimizado", Content = "Para reabrir o script aperte 'K'" })
+    Fluent:Notify({ Title = "Minimizado", Content = "Para reabrir o script, aperte 'K'" })
     wait(0.1)
     Window.Frame.Visible = false
 end)
 
--- Listener para reabrir a interface ao pressionar "K"
+-- Reexibe a janela ao pressionar a tecla de atalho (K)
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed and input.KeyCode == Enum.KeyCode.K then
@@ -174,5 +217,15 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
     end
 end)
 
+-- Configuração dos Addons para a aba Settings
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+InterfaceManager:SetFolder("FluentScriptHub")
+SaveManager:SetFolder("FluentScriptHub/specific-game")
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+
+-- Seleciona a aba inicial
+Window:SelectTab(1)
