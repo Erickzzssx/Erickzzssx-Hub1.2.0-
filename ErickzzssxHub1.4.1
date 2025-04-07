@@ -35,6 +35,8 @@ local Tabs = {
 -- Aba Main: Informações e botões de scripts diversos
 Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Selecione um script para executar:" })
 
+Tabs.Main:AddParagraph({ Title = "Scripts", Content = "Key Blue Lock Rivals: RinnTakesInchesDaily" })
+
 -- Aba Credits: Informações de créditos
 Tabs.Credits:AddParagraph({ Title = "TikTok", Content = "erickzzssx0" })
 Tabs.Credits:AddParagraph({ Title = "GitHub", Content = "github.com/Erickzzssx" })
@@ -61,6 +63,10 @@ end })
 
 Tabs.Main:AddButton({ Title = "Fisch", Callback = function()
     executeScript("Fisch", "https://rawscripts.net/raw/Fisch-Speed-Hub-X-No-Key-Free-21187")
+end })
+
+Tabs.Main:AddButton({ Title = "Blue Lock Rivals", Callback = function()
+    executeScript("Fisch", "loadstring(game:HttpGet("https://raw.githubusercontent.com/Bhusant/Bathroom-attack/refs/heads/main/Bathroom"))()")
 end })
 
 Tabs.Main:AddButton({ Title = "Blade Ball", Callback = function()
